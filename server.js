@@ -15,6 +15,8 @@ var stripe = Stripe(secretKey)
 const app = express()
 app.set('view engine', 'ejs')
 app.use(express.json())
+app.use(express.static('public'))
+
 
 
 app.get('/store', (req, res) => {
@@ -60,10 +62,6 @@ app.post('/purchase', function(req, res) {
         }
     })
 })
-
-app.set('view engine', 'ejs')
-
-app.use(express.static('public'))
 
 
 app.listen(3000, ()=>console.log('Server running on Port: 3000'.yellow.bold))
